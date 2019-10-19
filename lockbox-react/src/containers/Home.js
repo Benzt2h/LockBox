@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { lockerFetchs } from '../actions';
+import Locker from './lockers/Locker';
 
 class Home extends Component {
 
@@ -11,11 +12,32 @@ class Home extends Component {
         this.props.lockerFetchs()
     }
 
+    showLockers(size) {
+        if (this.props.locker && this.props.locker.length > 0) {
+            return this.props.locker.map(locker => {
+                if (locker.size == size) {
+                    return <Locker key={locker._id} {...locker} lockerSize={size} />
+                }
+            })
+        }
+    }
+
     render() {
         return (
             <div>
                 <Header />
-
+                <hr />
+                <div className="container">
+                    <div className="row justify-content-center">
+                        {this.showLockers("M")}
+                    </div>
+                    <div className="row justify-content-center mt-3">
+                        {this.showLockers("L")}
+                    </div>
+                    <div className="row justify-content-center mt-3">
+                        {this.showLockers("XL")}
+                    </div>
+                </div>
                 <Footer />
             </div>
         )
