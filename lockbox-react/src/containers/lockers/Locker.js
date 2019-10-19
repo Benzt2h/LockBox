@@ -18,17 +18,33 @@ class Locker extends Component {
                 )
             }
         } else if (size == "L") {
-            return (
-                <div className="col-3">
-                    <button className="btn btn-outline-primary btn-block" style={{ height: 100 }}>L</button>
-                </div>
-            )
+            if (!this.props.status) {
+                return (
+                    <div className="col-3">
+                        <button className="btn btn-outline-primary btn-block" style={{ height: 100 }}>L</button>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className="col-3">
+                        <button className="btn btn-outline-danger btn-block" style={{ height: 100 }}>L</button>
+                    </div>
+                )
+            }
         } else if (size == "XL") {
-            return (
-                <div className="col-5">
-                    <button className="btn btn-outline-primary btn-block" style={{ height: 200 }}>XL</button>
-                </div>
-            )
+            if (!this.props.status) {
+                return (
+                    <div className="col-5">
+                        <button className="btn btn-outline-primary btn-block" style={{ height: 200 }}>XL</button>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className="col-5">
+                        <button className="btn btn-outline-danger btn-block" style={{ height: 200 }}>XL</button>
+                    </div>
+                )
+            }
         }
     }
 
