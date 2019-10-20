@@ -10,16 +10,25 @@ class Home extends Component {
 
     componentDidMount() {
         this.props.lockerFetchs()
+        this.lockerDeposit = this.lockerDeposit.bind(this)
+        this.lockerWithdraw = this.lockerWithdraw.bind(this)
     }
 
     showLockers(size) {
         if (this.props.locker && this.props.locker.length > 0) {
             return this.props.locker.map(locker => {
                 if (locker.size == size) {
-                    return <Locker key={locker._id} {...locker} lockerSize={size} />
+                    return <Locker key={locker.id} {...locker} lockerSize={size} onLockerDeposit={this.lockerDeposit} onLockerWithdraw={this.lockerWithdraw} />
                 }
             })
         }
+    }
+
+    lockerDeposit(id) {
+        this.props.history.push('deposit/' + id);
+    }
+    lockerWithdraw(id) {
+        this.props.history.push('withdraw/' + id);
     }
 
     render() {

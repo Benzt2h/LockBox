@@ -7,13 +7,13 @@ class Locker extends Component {
             if (!this.props.status) {
                 return (
                     <div className="col-2">
-                        <button className=" btn btn-outline-primary btn-block">M</button>
+                        <button className=" btn btn-outline-primary btn-block" onClick={() => this.props.onLockerDeposit(this.props.id)}>M</button>
                     </div>
                 )
             } else {
                 return (
                     <div className="col-2">
-                        <button className=" btn btn-outline-danger btn-block">M</button>
+                        <button className=" btn btn-outline-danger btn-block" onClick={() => this.props.onLockerWithdraw(this.props.id)}>M</button>
                     </div>
                 )
             }
@@ -21,13 +21,13 @@ class Locker extends Component {
             if (!this.props.status) {
                 return (
                     <div className="col-3">
-                        <button className="btn btn-outline-primary btn-block" style={{ height: 100 }}>L</button>
+                        <button className="btn btn-outline-primary btn-block" style={{ height: 100 }} onClick={() => this.props.onLockerDeposit(this.props.id)}>L</button>
                     </div>
                 )
             } else {
                 return (
                     <div className="col-3">
-                        <button className="btn btn-outline-danger btn-block" style={{ height: 100 }}>L</button>
+                        <button className="btn btn-outline-danger btn-block" style={{ height: 100 }} onClick={() => this.props.onLockerWithdraw(this.props.id)}>L</button>
                     </div>
                 )
             }
@@ -35,13 +35,13 @@ class Locker extends Component {
             if (!this.props.status) {
                 return (
                     <div className="col-5">
-                        <button className="btn btn-outline-primary btn-block" style={{ height: 200 }}>XL</button>
+                        <button className="btn btn-outline-primary btn-block" style={{ height: 200 }} onClick={() => this.props.onLockerDeposit(this.props.id)}>XL</button>
                     </div>
                 )
             } else {
                 return (
                     <div className="col-5">
-                        <button className="btn btn-outline-danger btn-block" style={{ height: 200 }}>XL</button>
+                        <button className="btn btn-outline-danger btn-block" style={{ height: 200 }} onClick={() => this.props.onLockerWithdraw(this.props.id)}>XL</button>
                     </div>
                 )
             }
