@@ -22,6 +22,8 @@ export const lockerFetch = id => {
 }
 
 export const lockerUpdate = (id, values) => {
+    values.start = Math.round(new Date().getTime() / (1000 * 60))
+    delete values["p-password"];
     return dispatch => {
         axios.put(process.env.REACT_APP_API_URL + "locker/" + id, values).then(
             res => {

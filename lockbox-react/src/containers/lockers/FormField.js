@@ -1,6 +1,6 @@
 import React from 'react';
 // meta :{error,touched}
-export default ({ label, input, type, required, readonly, maxlength, ref, meta }) => {
+export default ({ label, input, type, required, readonly, maxlength, meta }) => {
     return (
         <div className="form-group">
             <label>{label}</label>

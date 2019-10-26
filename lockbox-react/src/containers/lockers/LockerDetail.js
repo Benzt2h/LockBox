@@ -35,7 +35,7 @@ class LockerDetail extends Component {
 }
 
 function mapStateToProps({ form, locker }) {
-    return { formValues: form.lockerform ? form.lockerform : null, locker }
+    return { formValues: form.lockerform ? form.lockerform.values : null, locker }
 }
 
 export default connect(mapStateToProps, { lockerFetch, lockerUpdate })(LockerDetail)

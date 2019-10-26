@@ -14,30 +14,27 @@ class LockerForm extends Component {
         })
     }
 
-    timestamp() {
-        const time = new Date().toLocaleTimeString();
-        let timetext = document.getElementsByName('timestamp').value
-        //timetext.value = time;
-        console.log(timetext)
-    }
 
     render() {
-        const { onLockerSubmit, match } = this.props
+        const { onLockerSubmit } = this.props
         return (
             <div>
                 <form onSubmit={this.props.handleSubmit(onLockerSubmit)}>
-                    {match.path.indexOf("deposit") > 0 && (
-                        this.renderFields(DepositField)
-                    )}
-                    {match.path.indexOf("withdraw") > 0 && (
-                        this.renderFields(WithdrawField)
-                    )}
-                    {this.timestamp()}
+                    this.renderFields(DepositField)
                     <button className="btn btn-block btn-info" type="submit">ยืนยัน</button>
                 </form>
             </div>
         )
     }
+}
+
+function validate(values) {
+    const errors = {};
+    if (values["password"] != values["p-password"]) {
+        errors["password"] = "รหัสผ่านไม่ตรงกัน"
+    }
+
+    return errors
 }
 
 function mapStateToProps({ locker }) {
@@ -48,6 +45,6 @@ function mapStateToProps({ locker }) {
     }
 }
 
-LockerForm = reduxForm({ form: "lockerform" })(LockerForm)
+LockerForm = reduxForm({ validate, form: "lockerform" })(LockerForm)
 
 export default connect(mapStateToProps)(LockerForm)
