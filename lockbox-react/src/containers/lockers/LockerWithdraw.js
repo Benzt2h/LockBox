@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import FormField from './FormField';
-import { DepositField, WithdrawField } from './LockerFormField';
+import { WithdrawField } from './LockerFormField';
 
-class LockerForm extends Component {
+class LockerWithdraw extends Component {
 
     renderFields(formFields) {
         return formFields.map(({ label, name, type, required, readonly, maxlength }) => {
@@ -19,8 +19,9 @@ class LockerForm extends Component {
         const { onLockerSubmit } = this.props
         return (
             <div>
+                <h3>รับของ</h3>
                 <form onSubmit={this.props.handleSubmit(onLockerSubmit)}>
-                    this.renderFields(DepositField)
+                    {this.renderFields(WithdrawField)}
                     <button className="btn btn-block btn-info" type="submit">ยืนยัน</button>
                 </form>
             </div>
@@ -30,8 +31,10 @@ class LockerForm extends Component {
 
 function validate(values) {
     const errors = {};
-    if (values["password"] != values["p-password"]) {
-        errors["password"] = "รหัสผ่านไม่ตรงกัน"
+    if (values["p-password"] != values["password"]) {
+        errors["p-password"] = "รหัสผ่านไม่ถูกต้อง"
+    } if (values["p-price"] < values["price"]) {
+        errors["p-price"] = "กรุณาใส่เงินเพิ่ม"
     }
 
     return errors
@@ -45,6 +48,6 @@ function mapStateToProps({ locker }) {
     }
 }
 
-LockerForm = reduxForm({ validate, form: "lockerform" })(LockerForm)
+LockerWithdraw = reduxForm({ validate, form: "lockerform" })(LockerWithdraw)
 
-export default connect(mapStateToProps)(LockerForm)
+export default connect(mapStateToProps)(LockerWithdraw)

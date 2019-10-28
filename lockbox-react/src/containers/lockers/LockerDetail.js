@@ -3,7 +3,8 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { lockerFetch, lockerUpdate } from '../../actions';
 import { connect } from 'react-redux';
-import LockerForm from './LockerForm';
+import LockerDeposit from './LockerDeposit';
+import LockerWithdraw from './LockerWithdraw';
 
 class LockerDetail extends Component {
 
@@ -21,12 +22,12 @@ class LockerDetail extends Component {
                 <hr />
                 <div className="container col-md-5 mt-3">
                     {match.path.indexOf("deposit") > 0 && (
-                        <h3>ฝากของ</h3>
+                        <LockerDeposit onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
                     )}
                     {match.path.indexOf("withdraw") > 0 && (
-                        <h3>รับของ</h3>
+                        <LockerWithdraw onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
                     )}
-                    <LockerForm match={match} onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
+
                 </div>
                 <Footer />
             </div>
