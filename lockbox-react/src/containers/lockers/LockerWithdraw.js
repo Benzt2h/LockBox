@@ -6,6 +6,11 @@ import { WithdrawField } from './LockerFormField';
 
 class LockerWithdraw extends Component {
 
+    constructor(props) {
+        super(props);
+        this.refPassword = React.createRef();
+    }
+
     renderFields(formFields) {
         return formFields.map(({ label, name, type, required, readonly, maxlength }) => {
             return (
@@ -18,13 +23,10 @@ class LockerWithdraw extends Component {
     render() {
         const { onLockerSubmit } = this.props
         return (
-            <div>
-                <h3>รับของ</h3>
-                <form onSubmit={this.props.handleSubmit(onLockerSubmit)}>
-                    {this.renderFields(WithdrawField)}
-                    <button className="btn btn-block btn-info" type="submit">ยืนยัน</button>
-                </form>
-            </div>
+            <form onSubmit={this.props.handleSubmit(onLockerSubmit)}>
+                {this.renderFields(WithdrawField)}
+                <button className="btn btn-block btn-info" type="submit">ยืนยัน</button>
+            </form>
         )
     }
 }

@@ -5,6 +5,7 @@ import { lockerFetch, lockerUpdate } from '../../actions';
 import { connect } from 'react-redux';
 import LockerDeposit from './LockerDeposit';
 import LockerWithdraw from './LockerWithdraw';
+import { Redirect } from 'react-router-dom';
 
 class LockerDetail extends Component {
 
@@ -22,10 +23,26 @@ class LockerDetail extends Component {
                 <hr />
                 <div className="container col-md-5 mt-3">
                     {match.path.indexOf("deposit") > 0 && (
-                        <LockerDeposit onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
+                        <div>
+                            <h3>ฝากของ</h3>
+                            {locker.saved && (
+                                alert(locker.msg),
+                                <Redirect to="/" />
+                            )
+                            }
+                            <LockerDeposit lockerPassword={locker.password} onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
+                        </div>
                     )}
                     {match.path.indexOf("withdraw") > 0 && (
-                        <LockerWithdraw onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
+                        <div>
+                            <h3>รับของ</h3>
+                            {locker.saved && (
+                                alert(locker.msg),
+                                <Redirect to="/" />
+                            )
+                            }
+                            <LockerWithdraw lockerPassword={locker.password} onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
+                        </div>
                     )}
 
                 </div>

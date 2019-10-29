@@ -14,17 +14,13 @@ class LockerDeposit extends Component {
         })
     }
 
-
     render() {
         const { onLockerSubmit } = this.props
         return (
-            <div>
-                <h3>ฝากของ</h3>
-                <form onSubmit={this.props.handleSubmit(onLockerSubmit)}>
-                    {this.renderFields(DepositField)}
-                    <button className="btn btn-block btn-info" type="submit">ยืนยัน</button>
-                </form>
-            </div>
+            <form onSubmit={this.props.handleSubmit(onLockerSubmit)}>
+                {this.renderFields(DepositField)}
+                <button className="btn btn-block btn-info" type="submit">ยืนยัน</button>
+            </form>
         )
     }
 }
