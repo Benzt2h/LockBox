@@ -30,7 +30,7 @@ class LockerDetail extends Component {
                                 <Redirect to="/" />
                             )
                             }
-                            <LockerDeposit lockerPassword={locker.password} onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
+                            <LockerDeposit onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
                         </div>
                     )}
                     {match.path.indexOf("withdraw") > 0 && (
@@ -41,7 +41,7 @@ class LockerDetail extends Component {
                                 <Redirect to="/" />
                             )
                             }
-                            <LockerWithdraw lockerPassword={locker.password} onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
+                            <LockerWithdraw onLockerSubmit={() => lockerUpdate(locker.id, formValues)} />
                         </div>
                     )}
 

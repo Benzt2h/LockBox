@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { lockerFetchs } from '../actions';
 import Locker from './lockers/Locker';
@@ -37,6 +37,9 @@ class Home extends Component {
                 <Header />
                 <hr />
                 <div className="container">
+                    <div className="text-center mb-3">
+                        <Link to="/howitwork" >ราคาและวิธีใช้งาน</Link>
+                    </div>
                     <div className="row justify-content-center">
                         {this.showLockers("M")}
                     </div>
