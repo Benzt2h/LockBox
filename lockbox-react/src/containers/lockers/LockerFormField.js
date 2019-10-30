@@ -9,6 +9,5 @@ export const WithdrawField = [
     { label: "ฝากไว้เป็นเวลา(ชั่วโมง)", name: "time", type: "text", required: true, readonly: "readonly" },
     { label: "เงินที่ต้องจ่าย", name: "price", type: "number", required: true, readonly: "readonly" },
     { label: "จำนวนเงินที่ใส่", name: "p-price", type: "number", required: true },
-    { label: "รหัสผ่าน", name: "p-password", type: "password", required: true, maxlength: "10" },
-    { name: "password", type: "hidden", required: true, maxlength: "10" }
+    { label: "รหัสผ่าน", name: "p-password", type: "password", required: true, maxlength: "10" }
 ]

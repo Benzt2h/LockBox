@@ -33,7 +33,7 @@ class LockerWithdraw extends Component {
 
 function validate(values) {
     const errors = {};
-    if (values["p-password"] != values["password"]) {
+    if (values["p-password"] != userPassword) {
         errors["p-password"] = "รหัสผ่านไม่ถูกต้อง"
     } if (values["p-price"] < values["price"]) {
         errors["p-price"] = "กรุณาใส่เงินเพิ่ม"
@@ -42,8 +42,11 @@ function validate(values) {
     return errors
 }
 
+let userPassword = null
+
 function mapStateToProps({ locker }) {
     if (locker && locker.id) {
+        userPassword = locker.password
         return { initialValues: locker }
     } else {
         return {}
