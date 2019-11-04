@@ -3,7 +3,7 @@ import { LOCKER_FETCHS, LOCKER_FETCH, LOCKER_UPDATE } from './types';
 
 export const lockerFetchs = () => {
     return dispatch => {
-        axios.get(process.env.REACT_APP_API_URL + "locker").then(
+        axios.get(process.env.REACT_APP_API_URL + "lockBox").then(
             res => {
                 dispatch({ type: LOCKER_FETCHS, payload: res.data })
             }

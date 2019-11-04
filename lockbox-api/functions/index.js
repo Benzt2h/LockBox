@@ -8,7 +8,7 @@ let db = admin.database()
 
 const app = express()
 
-app.use(cors({ origin: true }))
+app.use(cors())
 
 app.get('/', (req, res, next) => {
     let data = db.ref("locker")
