@@ -18,11 +18,18 @@ app.get('/', (req, res, next) => {
 })
 
 
-app.get('/test', (req, res, next) => {
-    let data = db.ref("locker").orderByChild("id").equalTo(1);
-    data.on("value", (snapshot) => {
+app.get('/:id', (req, res, next) => {
+    let id = parseInt(req.params.id)
+    let data = db.ref("locker").orderByChild("id").equalTo(id)
+    data.once("child_added", (snapshot) => {
         res.send(snapshot.val())
     })
+})
+
+app.put('/:id', (req, res, next) => {
+    let id = parseInt(req.params.id) - 1
+    db.ref("locker/" + id).update(req.body)
+    res.send({ msg: "บันทึกข้อมูลสำเร็จ" })
 })
 
 exports.lockBox = functions.https.onRequest(app);
