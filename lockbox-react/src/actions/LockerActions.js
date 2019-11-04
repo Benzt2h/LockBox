@@ -13,7 +13,7 @@ export const lockerFetchs = () => {
 
 export const lockerFetch = id => {
     return dispatch => {
-        axios.get(process.env.REACT_APP_API_URL + "locker/" + id).then(
+        axios.get(process.env.REACT_APP_API_URL + "lockBox/" + id).then(
             res => {
                 if (res.data["start"] != null) {
                     res.data["time"] = Math.ceil(((Math.round(new Date().getTime() / (1000 * 60))) - res.data["start"]) / 60)
@@ -43,7 +43,7 @@ export const lockerUpdate = (id, values) => {
         values["password"] = null
         values["start"] = null
         return dispatch => {
-            axios.put(process.env.REACT_APP_API_URL + "locker/" + id, values).then(
+            axios.put(process.env.REACT_APP_API_URL + "lockBox/" + id, values).then(
                 res => {
                     dispatch({ type: LOCKER_UPDATE })
                 }
@@ -53,7 +53,7 @@ export const lockerUpdate = (id, values) => {
         values.start = (Math.round(new Date().getTime() / (1000 * 60)))
         delete values["p-password"];
         return dispatch => {
-            axios.put(process.env.REACT_APP_API_URL + "locker/" + id, values).then(
+            axios.put(process.env.REACT_APP_API_URL + "lockBox/" + id, values).then(
                 res => {
                     dispatch({ type: LOCKER_UPDATE })
                 }
